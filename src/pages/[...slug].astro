@@ -54,8 +54,8 @@ const story = data.story
 ---
 
 <BaseLayout langSwitch={langSwitch} language={language}>
-  <div class="hidden">
-    {JSON.stringify(props)}
+  <div class="hiddenn">
+    {JSON.stringify({ params, props })}
   </div>
   <StoryblokComponent language={language} blok={story.content} />
 </BaseLayout>

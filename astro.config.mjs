@@ -28,9 +28,7 @@ export default defineConfig({
     tailwind(),
   ],
   output: env.STORYBLOK_IS_PREVIEW === 'true' ? 'server' : 'hybrid',
-  adapter: netlify({
-    edgeMiddleware: true,
-  }),
+  adapter: netlify(),
   ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
       plugins: [basicSsl()],
