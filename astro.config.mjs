@@ -25,12 +25,14 @@ export default defineConfig({
     }),
     tailwind(),
   ],
-  output: process.env.IS_PREVIEW === 'true' ? 'server' : 'hybrid',
-  vite: {
-    plugins: [basicSsl()],
-    server: {
-      https: true,
-    },
-  },
+  output: env.IS_PREVIEW === 'true' ? 'server' : 'hybrid',
   adapter: vercel(),
+  ...(env.VERCEL_ENV === 'development' && {
+    vite: {
+      plugins: [basicSsl()],
+      server: {
+        https: true,
+      },
+    },
+  }),
 })
