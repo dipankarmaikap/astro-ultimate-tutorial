@@ -13,6 +13,7 @@ export default defineConfig({
   integrations: [
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
+      bridge: env.STORYBLOK_IS_PREVIEW === 'yes',
       components: {
         page: 'storyblok/Page',
         feature: 'storyblok/Feature',
@@ -27,7 +28,7 @@ export default defineConfig({
     }),
     tailwind(),
   ],
-  output: env.STORYBLOK_IS_PREVIEW === 'true' ? 'server' : 'hybrid',
+  output: env.STORYBLOK_IS_PREVIEW === 'yes' ? 'server' : 'hybrid',
   adapter: netlify(),
   ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
