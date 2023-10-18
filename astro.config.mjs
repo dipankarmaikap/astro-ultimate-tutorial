@@ -25,9 +25,9 @@ export default defineConfig({
     }),
     tailwind(),
   ],
-  output: env.IS_PREVIEW === 'true' ? 'server' : 'hybrid',
+  output: env.STORYBLOK_IS_PREVIEW === 'true' ? 'server' : 'hybrid',
   adapter: vercel(),
-  ...(env.VERCEL_ENV === 'development' && {
+  ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
       plugins: [basicSsl()],
       server: {
