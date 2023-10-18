@@ -56,7 +56,15 @@ const story = data.story
 <div class="">
   <h1>Basic Site</h1>
   <p>
-    {JSON.stringify({ params, props })}
+    {
+      JSON.stringify({
+        params,
+        props,
+        isPreview: isPreview(),
+        parseUrl: parseUrl(params?.slug),
+        aProps: Astro.props,
+      })
+    }
   </p>
   <pre class="whitespace-pre-wrap">{JSON.stringify(story,null,3)}</pre>
 </div>
