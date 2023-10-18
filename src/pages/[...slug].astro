@@ -53,9 +53,16 @@ const { data } = await storyblokApi.get(
 const story = data.story
 ---
 
-<BaseLayout langSwitch={langSwitch} language={language}>
+<div class="">
+  <h1>Basic Site</h1>
+  <p>
+    {JSON.stringify({ params, props })}
+  </p>
+  <pre class="whitespace-pre-wrap">{JSON.stringify(story,null,3)}</pre>
+</div>
+<!-- <BaseLayout langSwitch={langSwitch} language={language}>
   <div class="hiddenn">
     {JSON.stringify({ params, props })}
   </div>
   <StoryblokComponent language={language} blok={story.content} />
-</BaseLayout>
+</BaseLayout> -->
