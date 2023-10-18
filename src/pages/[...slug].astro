@@ -39,6 +39,7 @@ export async function getStaticPaths() {
   return paths
 }
 const params = Astro.params
+
 let props = isPreview() ? parseUrl(params?.slug) : Astro.props
 
 const { slug, language, langSwitch } = props
@@ -55,5 +56,8 @@ const story = data.story
 ---
 
 <BaseLayout langSwitch={langSwitch} language={language}>
+  <div class="hidden">
+    {JSON.stringify(props)}
+  </div>
   <StoryblokComponent language={language} blok={story.content} />
 </BaseLayout>

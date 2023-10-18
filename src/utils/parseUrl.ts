@@ -1,6 +1,6 @@
 import { languages } from './langs'
 
-export default function parseUrl(url) {
+export default function parseUrl(url: string) {
   let urlToArray = url?.split('/')
   let defaultLang = 'en'
   let isKnownLang = languages.some((l) => l === urlToArray?.[0])
