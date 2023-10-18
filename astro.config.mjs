@@ -4,6 +4,8 @@ import { loadEnv } from 'vite'
 import tailwind from '@astrojs/tailwind'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import vercel from '@astrojs/vercel/serverless'
+// import netlify from '@astrojs/netlify/functions'
+
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
 // https://astro.build/config
@@ -26,7 +28,9 @@ export default defineConfig({
     tailwind(),
   ],
   output: env.STORYBLOK_IS_PREVIEW === 'true' ? 'server' : 'hybrid',
-  adapter: vercel(),
+  adapter: vercel({
+    edgeMiddleware: true,
+  }),
   ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
       plugins: [basicSsl()],

@@ -18,6 +18,7 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
+    "@astrojs/netlify": "^3.0.3",
     "@astrojs/vercel": "^5.0.2"
   }
 }
