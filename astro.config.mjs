@@ -28,9 +28,7 @@ export default defineConfig({
     tailwind(),
   ],
   output: env.STORYBLOK_IS_PREVIEW === 'yes' ? 'server' : 'hybrid',
-  adapter: vercel({
-    edgeMiddleware: true,
-  }),
+  adapter: vercel(),
   ...(env.STORYBLOK_ENV === 'development' && {
     vite: {
       plugins: [basicSsl()],
