@@ -9,7 +9,7 @@ import isPreview from '../utils/isPreview'
 export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi()
   const { data } = await storyblokApi.get('cdn/links', {
-    version: 'draft',
+    version: isPreview() ? 'draft' : 'published',
   })
   let links = data.links
   links = Object.values(links)
@@ -39,9 +39,7 @@ export async function getStaticPaths() {
   return paths
 }
 const params = Astro.params
-
 let props = isPreview() ? parseUrl(params?.slug) : Astro.props
-
 const { slug, language, langSwitch } = props
 const storyblokApi = useStoryblokApi()
 const { data } = await storyblokApi.get(
