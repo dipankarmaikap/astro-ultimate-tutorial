@@ -51,6 +51,7 @@ const { data } = await storyblokApi.get(
   }
 )
 const story = data.story
+let env = import.meta.env
 ---
 
 <div class="">
@@ -58,6 +59,7 @@ const story = data.story
   <p>
     {
       JSON.stringify({
+        env,
         params,
         props,
         isPreview: isPreview(),
